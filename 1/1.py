@@ -12,4 +12,9 @@ leftlist.sort()
 rightlist.sort()
 
 difflist = [abs(a-b) for a,b in zip (leftlist,rightlist)]
-print(sum(difflist))
+print('part one answer:',sum(difflist))
+
+part2score=0
+for num1 in leftlist:
+    part2score+=rightlist.count(num1)*num1
+print ('part 2 answer:', part2score)
