@@ -1,8 +1,5 @@
 from itertools import count
 
-from pycparser.c_ast import Return
-
-
 def eval_report(report: list) -> bool:
     """
 
@@ -18,14 +15,25 @@ def eval_report(report: list) -> bool:
     else:
         return False
 
-sum=0
+part1_sum=0
+part2_sum=0
 with open('2.txt', 'r') as file:
     lines = file.readlines()
     for line in lines:
         line = line.strip().split(' ')
         line = [int(e) for e in line]
         if(eval_report(line)):
-            sum+=1
-print('part 1 answer:',sum)
+            part1_sum+=1
+            part2_sum+=1
+        else:
+            iterations = [line[:i] + line[i + 1:] for i in range(len(line))]
+            iter_results=[]
+            for iteration in iterations:
+                iter_results.append(eval_report(iteration))
+            if max(iter_results)==True:
+                part2_sum+=1
+print('part 1 answer:',part1_sum)
+print('part 2 answer:',part2_sum)
+
 
 #eval_report([1,3,6,7,9])
