@@ -14,7 +14,7 @@ part1_nums = re.findall(pattern1,lines)
 #print (part1_nums)
 for command in part1_nums:
     product += int(command[0])*int(command[1])
-#print(product)
+print('part 1 answer:',product)
 
 part2_nums=re.findall(pattern2,lines)
 print (part2_nums)
@@ -34,5 +34,5 @@ for i in part2_nums:
     if i[0]=="don't()":
         #print ('setting state to do not')
         instr = "don't()"
-print (sum)
+print ('part2 answer:',sum)
 
