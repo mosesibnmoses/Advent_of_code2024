@@ -1,18 +1,20 @@
 from utils.helpers import parse_input
 
-leftlist=[]
-rightlist=[]
+
+
+def process_lines(lines):
+    leftlist=[]
+    rightlist=[]
+
+    for line in lines:
+        num1=int((line.strip().split(' ')[0]))
+        num2=int((line.strip().split(' ')[-1]))
+        leftlist.append(num1)
+        rightlist.append(num2)
+    return sorted(leftlist),sorted(rightlist)
+
 lines = parse_input('../data/1_input.txt')
-
-for line in lines:
-    print (line)
-    num1=int((line.strip().split(' ')[0]))
-    num2=int((line.strip().split(' ')[-1]))
-    leftlist.append(num1)
-    rightlist.append(num2)
-leftlist.sort()
-rightlist.sort()
-
+leftlist,rightlist=process_lines(lines)
 difflist = [abs(a-b) for a,b in zip (leftlist,rightlist)]
 print('part one answer:',sum(difflist))
 
