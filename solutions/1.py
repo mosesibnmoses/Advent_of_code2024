@@ -1,7 +1,9 @@
+from utils.helpers import parse_input
+
 leftlist=[]
 rightlist=[]
-with open('1.txt', 'r') as file:
-    lines = file.readlines()
+lines = parse_input('../data/1_input.txt')
+
 for line in lines:
     print (line)
     num1=int((line.strip().split(' ')[0]))
