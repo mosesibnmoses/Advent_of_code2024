@@ -7,10 +7,7 @@ from utils.helpers import read_grid
 
 
 filename= "../data/4_input.txt"
-test_filename="../tests/4_test_input.txt"
-
-grid=read_grid(test_filename)
-print (grid)
+grid=read_grid(filename)
 pattern = 'XMAS'
 rows, cols = grid.shape
 
@@ -24,10 +21,14 @@ def check_direction(grid,start_row,start_col,dir_row,dir_col):
 
 directions=[(0,1),(0,-1),(1,0),(-1,0),
             (1,1),(-1,-1),(-1,1),(1,-1)]
-count=0
-for i in range(grid.shape[0]):
-    for j in range(grid.shape[1]):
-        for dir in directions:
-            if check_direction(grid,i,j,dir[0],dir[1]):
-                count+=1
-print (count)
+
+def count_xmax(gridname):
+    count=0
+    for i in range(grid.shape[0]):
+        for j in range(grid.shape[1]):
+            for dir in directions:
+                if check_direction(gridname,i,j,dir[0],dir[1]):
+                    count+=1
+    return count
+
+print(count_xmax(grid))
