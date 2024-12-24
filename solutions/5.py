@@ -10,10 +10,10 @@ sequences = (file[file.index('')+1:])
 rules_list=defaultdict(list)
 for rule in sorted(rules):
     num1,num2= rule.split('|')
-    print (num1,num2)
+    #print (num1,num2)
     rules_list[num1].append(num2)
 
-print (rules_list)
+#print (rules_list)
 valid_seqs=[]
 invalid_seqs=[]
 
