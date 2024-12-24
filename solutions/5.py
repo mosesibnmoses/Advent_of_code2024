@@ -4,14 +4,15 @@ from collections import defaultdict
 
 from utils.helpers import parse_input
 
-file=parse_input('../tests/5_test_input.txt')
+#file=parse_input('../tests/5_test_input.txt')
+file=parse_input('../data/5_input.txt')
 rules = (file[:file.index('')])
 sequences = (file[file.index('')+1:])
 
 rules_list=defaultdict(list)
 for rule in sorted(rules):
     num1,num2= rule.split('|')
-    print (num1,num2)
+    #print (num1,num2)
     rules_list[num1].append(num2)
 
 print (rules_list)
@@ -19,22 +20,22 @@ valid_seqs=[]
 for sequence in sequences:
     valid=True
     sequence=sequence.split(',')
-    print('\nseq',sequence)
+    #print('\nseq',sequence)
     for i in (range(len(sequence))):
         page=sequence[i]
         print (page)
         disallowed=rules_list[page]
-        print(page,'cannot be preceded by',disallowed)
+        #print(page,'cannot be preceded by',disallowed)
         preceding_pages=sequence[:i]
-        print ('is preceded by', preceding_pages)
+        #print ('is preceded by', preceding_pages)
         violators=set(preceding_pages).intersection(set(disallowed))
-        print (len(violators),'violators:',[violators])
+        #print (len(violators),'violators:',[violators])
         if len(violators)>=1:
-            print ('skipping sequence')
+            #print ('skipping sequence')
             valid=False
             break
     if valid:
-        print ('VALID')
+        #print ('VALID')
         valid_seqs.append(sequence)
     print (valid_seqs)
 
